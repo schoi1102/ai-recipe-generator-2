@@ -1,0 +1,15 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install -g aws-cdk
+        - cdk bootstrap aws://664418979686/us-east-1
+    build:
+      commands:
+        - cdk synth
+        - cdk deploy --require-approval never
+  artifacts:
+    baseDirectory: .
+    files:
+      - "**/*"
